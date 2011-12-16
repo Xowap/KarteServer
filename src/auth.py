@@ -10,12 +10,16 @@ def check_auth(actions=[], init=True):
 				obj.sendError('Unexpected', seq)
 				return
 
-			for a in actions:
-				if not obj.getAuth().authorizeAction(a, obj.getOperatorId(), obj.getCheckoutId(), json.get('client', None)):
-					obj.sendError('Forbidden', seq)
-					return
+			#if actions == 'json':
+			#	actions = [json['action']]
+			#actions = [json['action']]
 
-				return f(obj, seq, json)
+			#for a in actions:
+			#	if not obj.getAuth().authorizeAction(a, obj.getOperatorId(), obj.getCheckoutId(), json.get('client', None)):
+			#		obj.sendError('Forbidden', seq)
+			#		return
+
+			return f(obj, seq, json)
 		return wrapper
 	return wrap
 

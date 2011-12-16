@@ -148,6 +148,7 @@ class Product(BaseProduct, Deletable):
 class Action(SingleCheckRow):
 	name = models.CharField(max_length = 50)
 	slug = models.SlugField()
+	reauth = models.BooleanField(default=False)
 	description = models.TextField()
 
 class Operation(DoubleCheckRow):
